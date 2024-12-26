@@ -16,15 +16,17 @@ function BreadcrumbHeader() {
   return (
     <div className="flex items-center flex-start">
       <Breadcrumb>
-      <BreadcrumbList>
-      {paths.map((path, index)=> (
-        <React.Fragment key={path} >
-            <BreadcrumbItem>
-            <
-            </BreadcrumbItem>
-        </React.Fragment>
-      ))}
-      </BreadcrumbList>
+        <BreadcrumbList>
+          {paths.map((path, index) => (
+            <React.Fragment key={path}>
+              <BreadcrumbItem>
+                <BreadcrumbLink className="capitalize" href={`/${path}`}>
+                  {path === "" ? "home" : path}
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            </React.Fragment>
+          ))}
+        </BreadcrumbList>
       </Breadcrumb>
     </div>
   );
