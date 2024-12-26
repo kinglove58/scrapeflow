@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   CoinsIcon,
@@ -38,7 +38,8 @@ const routes = [
 function DesktopSidebar() {
   const pathName = usePathname();
   const activeRoute = routes.find(
-    (route) => route.href.length > 0 && pathName.includes(route.href) || routes[0]
+    (route) =>
+      (route.href.length > 0 && pathName.includes(route.href)) || routes[0]
   );
   return (
     <div className="hidden relative md:block min-w-[280px] max-w-[280px] h-screen overflow-hidden w-full bg-primary/5 dark:bg-secondary/30 dark:text-foreground text-muted-foreground border-r-2 border-separate">
@@ -48,9 +49,14 @@ function DesktopSidebar() {
       <div className="flex flex-col p-2 py-4">
         {routes.map((route) => (
           <Link
-            key={route.label}
+            key={route.href}
             href={route.href}
-            className={buttonVariants({})}
+            className={buttonVariants({
+              variant:
+                activeRoute?.href === route.href
+                  ? "sidebarActiveItem"
+                  : "sidebarItem",
+            })}
           >
             <route.icon size={20} />
             {route.label}
