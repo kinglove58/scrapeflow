@@ -4,8 +4,8 @@ const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)"]);
 
 export default clerkMiddleware((auth, request) => {
   if (!isPublicRoute(request)) {
-        // @ts-ignore: Ignore TypeScript error
-    auth.protect();
+    // @ts-ignore: Ignore TypeScript error
+    auth().protect();
   }
 });
 
