@@ -22,7 +22,7 @@ function NotFoundPage() {
         </div>
       </div>
 
-      <footer className="text-muted-foreground text-sm">
+      <footer className="text-muted-foreground text-sm mt-12">
         If you believe this is an error please contact us
       </footer>
     </div>
