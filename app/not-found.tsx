@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-function Not() {
+function NotFoundPage() {
   return (
-    <div>not-found</div>
-  )
+    <div className="flex flex-col min-h-screen items-center justify-center">
+      not-found
+    </div>
+  );
 }
 
-export default not-found
+export default NotFoundPage;
