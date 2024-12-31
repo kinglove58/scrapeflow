@@ -13,7 +13,7 @@ import Logo from "./Logo";
 import Link from "next/link";
 import { Button, buttonVariants } from "./ui/button";
 import { usePathname } from "next/navigation";
-import { Sheet, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 const routes = [
   {
@@ -81,7 +81,7 @@ export function MobileSizeView() {
   );
 
   return (
-    <div className="md:hidden block bg-background border-separate ">
+    <div className="md:hidden block bg-background border-separate">
       <nav className="flex container items-center justify-between px-8">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
@@ -89,27 +89,14 @@ export function MobileSizeView() {
               <MenuIcon />
             </Button>
           </SheetTrigger>
+          <SheetContent
+            className="w-[400px] sm:w-[540px] space-y-4"
+            side="left"
+          >
+            <Logo />
+          </SheetContent>
         </Sheet>
       </nav>
-
-      <div className="p-2">TODO: CREDITS</div>
-      <div className="flex flex-col p-2 py-4">
-        {routes.map((route) => (
-          <Link
-            key={route.href}
-            href={route.href}
-            className={buttonVariants({
-              variant:
-                activeRoute?.href === route.href
-                  ? "sidebarActiveItem"
-                  : "sidebarItem",
-            })}
-          >
-            <route.icon size={20} />
-            {route.label}
-          </Link>
-        ))}
-      </div>
     </div>
   );
 }
