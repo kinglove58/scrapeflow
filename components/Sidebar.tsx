@@ -94,6 +94,24 @@ export function MobileSizeView() {
             side="left"
           >
             <Logo />
+            <div className="flex flex-col gap-1">
+              {routes.map((route) => (
+                <Link
+                  key={route.href}
+                  href={route.href}
+                  className={buttonVariants({
+                    variant:
+                      activeRoute?.href === route.href
+                        ? "sidebarActiveItem"
+                        : "sidebarItem",
+                  })}
+                  onClick={(prev) => setIsOpen(!prev)}
+                >
+                  <route.icon size={20} />
+                  {route.label}
+                </Link>
+              ))}
+            </div>
           </SheetContent>
         </Sheet>
       </nav>
