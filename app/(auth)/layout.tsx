@@ -1,8 +1,10 @@
+import Logo from "@/components/Logo";
 import React, { ReactNode } from "react";
 
 function layout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen gap-4 my-8">
+      <Logo />
       {children}
     </div>
   );

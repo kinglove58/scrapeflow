@@ -23,7 +23,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider afterSignOutUrl={"/sign-in"}>
+    <ClerkProvider afterSignOutUrl={"/sign-in"} appearance={{
+      elements:{
+        formButtonPrimary:
+      }
+    }
+    } >
       <html lang="en">
         <body className={inter.className}>
           {" "}
