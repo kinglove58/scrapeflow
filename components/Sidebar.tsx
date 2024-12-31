@@ -2,16 +2,18 @@
 
 import {
   CoinsIcon,
+  Ghost,
   HomeIcon,
   Layers2Icon,
+  MenuIcon,
   ShieldCheckIcon,
 } from "lucide-react";
 import React, { useState } from "react";
 import Logo from "./Logo";
 import Link from "next/link";
-import { buttonVariants } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { usePathname } from "next/navigation";
-import { Sheet } from "./ui/sheet";
+import { Sheet, SheetTrigger } from "./ui/sheet";
 
 const routes = [
   {
@@ -71,7 +73,7 @@ function DesktopSidebar() {
 }
 
 export function MobileSizeView() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const pathName = usePathname();
   const activeRoute = routes.find(
     (route) =>
@@ -81,7 +83,13 @@ export function MobileSizeView() {
   return (
     <div className="md:hidden block bg-background border-separate ">
       <nav className="flex container items-center justify-between px-8">
-        <Sheet open={isOpen} onOpenChange={setIsOpen}></Sheet>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild>
+            <Button variant={"ghost"} size={"icon"}>
+              <MenuIcon />
+            </Button>
+          </SheetTrigger>
+        </Sheet>
       </nav>
 
       <div className="p-2">TODO: CREDITS</div>
