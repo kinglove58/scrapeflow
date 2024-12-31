@@ -16,10 +16,15 @@ function NotFoundPage() {
             href="/"
             className="justify-center flex items-center px-4 py-2 bg-primary hover:bg-primary/80 text-white rounded-md transition-colors "
           >
-            <ArrowLeft
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Dashboard
           </Link>
         </div>
       </div>
+
+      <footer className="text-muted-foreground text-sm">
+        If you believe this is an error please contact us
+      </footer>
     </div>
   );
 }
