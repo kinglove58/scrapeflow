@@ -6,11 +6,12 @@ import {
   Layers2Icon,
   ShieldCheckIcon,
 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import Logo from "./Logo";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import { usePathname } from "next/navigation";
+import { Sheet } from "./ui/sheet";
 
 const routes = [
   {
@@ -70,6 +71,7 @@ function DesktopSidebar() {
 }
 
 export function MobileSizeView() {
+  const [isOpen, setIsOpen] = useState(false)
   const pathName = usePathname();
   const activeRoute = routes.find(
     (route) =>
@@ -77,10 +79,10 @@ export function MobileSizeView() {
   );
 
   return (
-    <div className="md:hidden relative block min-w-[280px] max-w-[280px] h-screen overflow-hidden w-full dark:bg-secondary/30 dark:text-foreground text-muted-foreground border-r-2 border-separate bg-background">
-      <div className="flex justify-center items-center gap-2 border-b-[1px] border-separate p-4">
-        <Logo />
-      </div>
+    <div className="md:hidden block bg-background border-separate ">
+      <nav className="flex container items-center justify-between px-8">
+        <Sheet open={isOpen} onOpenChange={setIsOpen}></Sheet>
+      </nav>
 
       <div className="p-2">TODO: CREDITS</div>
       <div className="flex flex-col p-2 py-4">
