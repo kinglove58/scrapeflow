@@ -47,8 +47,14 @@ async function UserWorkflows() {
   if (workflows.length === 0) {
     return (
       <div className="flex flex-col gap-4 h-full items-center justify-center">
-        <div className="flex rounded-full  w-20 h-20 items-center justify-center">
+        <div className="flex rounded-full bg-accent w-20 h-20 items-center justify-center">
           <InboxIcon size={40} className="stroke-primary" />
+        </div>
+        <div className="flex flex-col gap-1 text-center">
+          <p className="font-bold">No workflow created yet</p>
+          <p className="text-sm text-muted-foreground">
+            Click the button below to create your first workflow
+          </p>
         </div>
       </div>
     );
