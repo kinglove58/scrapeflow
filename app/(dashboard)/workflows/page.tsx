@@ -1,7 +1,8 @@
 import { GetWorkflowsForUser } from "@/action/workflow/getworkflowsForUser";
-import { Alert } from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { waitFor } from "@/lib/helper/waitFor";
+import { AlertCircle } from "lucide-react";
 import React, { Suspense } from "react";
 
 function page() {
@@ -33,13 +34,18 @@ function UserWorkflowsSkeleton() {
 }
 
 async function UserWorkflows() {
-  const workflows = await GetWorkflowsForUser();
-  if(!workflows){
+  try {
+    const workflows = await GetWorkflowsForUser();
+    return <div></div>;
+  } catch (error) {
     return (
-        <Alert varriant={"destructive"}></Alert>
-    )
+      <Alert variant={"destructive"}>
+        <AlertCircle className="w-4 h-4" />
+        <AlertTitle>Error</AlertTitle>
+        <AlertDescription>Sorry something went</AlertDescription>
+      </Alert>
+    );
   }
-  return <div></div>;
 }
 
 export default page;
