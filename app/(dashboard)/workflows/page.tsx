@@ -1,3 +1,5 @@
+import { GetWorkflowsForUser } from "@/action/workflow/getworkflowsForUser";
+import { Alert } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { waitFor } from "@/lib/helper/waitFor";
 import React, { Suspense } from "react";
@@ -31,7 +33,12 @@ function UserWorkflowsSkeleton() {
 }
 
 async function UserWorkflows() {
-  await waitFor(3000);
+  const workflows = await GetWorkflowsForUser();
+  if(!workflows){
+    return (
+        <Alert varriant={"destructive"}></Alert>
+    )
+  }
   return <div></div>;
 }
 
