@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 function page() {
   return (
@@ -9,8 +9,23 @@ function page() {
           <p className="text-muted-foreground">Manage your workflows</p>
         </div>
       </div>
+      <div className="h-full py-6">
+        <Suspense fallback={<UserWorkflowsSkeleton />}>
+          <UserWorkflows />
+        </Suspense>
+      </div>
     </div>
   );
 }
+
+function UserWorkflowsSkeleton() {
+  return <div className="space-y-2">
+    {[1,2,3,4].map((i) =>(
+        <Skeleton key={i} className="h-32 w-ful" />
+    ) )}
+  </div>;
+}
+
+export default UserWorkflowsSkeleton;
 
 export default page;
