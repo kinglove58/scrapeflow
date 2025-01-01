@@ -36,7 +36,7 @@ function UserWorkflowsSkeleton() {
 async function UserWorkflows() {
   try {
     const workflows = await GetWorkflowsForUser();
-    return <div></div>;
+    return <div>all good</div>;
   } catch (error) {
     return (
       <Alert variant={"destructive"}>
