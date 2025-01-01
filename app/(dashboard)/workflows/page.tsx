@@ -32,7 +32,7 @@ function UserWorkflowsSkeleton() {
 
 async function UserWorkflows() {
   await waitFor(3000);
-  return <div className="flex"></div>;
+  return <div></div>;
 }
 
 export default page;
