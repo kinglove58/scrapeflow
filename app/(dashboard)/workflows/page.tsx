@@ -1,4 +1,5 @@
 import { Skeleton } from "@/components/ui/skeleton";
+import { waitFor } from "@/lib/helper/waitFor";
 import React, { Suspense } from "react";
 
 function page() {
@@ -30,6 +31,7 @@ function UserWorkflowsSkeleton() {
 }
 
 async function UserWorkflows() {
+  await waitFor(3000);
   return <div className="flex"></div>;
 }
 
