@@ -2,7 +2,7 @@ import { GetWorkflowsForUser } from "@/action/workflow/getworkflowsForUser";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { waitFor } from "@/lib/helper/waitFor";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, InboxIcon } from "lucide-react";
 import React, { Suspense } from "react";
 
 function page() {
@@ -34,10 +34,8 @@ function UserWorkflowsSkeleton() {
 }
 
 async function UserWorkflows() {
-  try {
-    const workflows = await GetWorkflowsForUser();
-    return <div>all good</div>;
-  } catch (error) {
+  const workflows = await GetWorkflowsForUser();
+  if (!workflows) {
     return (
       <Alert variant={"destructive"}>
         <AlertCircle className="w-4 h-4" />
@@ -46,6 +44,16 @@ async function UserWorkflows() {
       </Alert>
     );
   }
+  if (workflows.length === 0) {
+    return (
+      <div className="flex flex-col gap-4 h-full items-center justify-center">
+        <div className="flex rounded-full  w-20 h-20 items-center justify-center">
+          <InboxIcon size={40} className="stroke-primary" />
+        </div>
+      </div>
+    );
+  }
+  return <div></div>;
 }
 
 export default page;
