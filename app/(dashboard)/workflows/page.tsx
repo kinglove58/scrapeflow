@@ -11,8 +11,10 @@ function page() {
       <div className="flex justify-between">
         <div className="flex flex-col">
           <h1 className="text-3xl font-bold">workflows</h1>
+
           <p className="text-muted-foreground">Manage your workflows</p>
         </div>
+        <CreateWorkflowsDialog />
       </div>
       <div className="h-full py-6">
         <Suspense fallback={<UserWorkflowsSkeleton />}>

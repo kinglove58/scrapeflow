@@ -10,6 +10,9 @@ function CreateWorkflowsDialog({ triggerText }: { triggerText?: string }) {
       <DialogTrigger asChild>
         <Button>{triggerText ?? "Create workflow"}</Button>
       </DialogTrigger>
+      <DialogContent className="px-0">
+        <CustomDialogHeader icon={} />
+      </DialogContent>
     </Dialog>
   );
 }
