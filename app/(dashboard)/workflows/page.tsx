@@ -3,6 +3,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { AlertCircle, InboxIcon } from "lucide-react";
 import React, { Suspense } from "react";
+import CreateWorkflowsDialog from "./_components/CreateWorkflowsDialog";
 
 function page() {
   return (
@@ -55,6 +56,7 @@ async function UserWorkflows() {
             Click the button below to create your first workflow
           </p>
         </div>
+        <CreateWorkflowsDialog triggerText="create your first workflow" />
       </div>
     );
   }
