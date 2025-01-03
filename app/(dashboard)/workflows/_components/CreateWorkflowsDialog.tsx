@@ -52,7 +52,13 @@ function CreateWorkflowsDialog({ triggerText }: { triggerText?: string }) {
   );
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog
+      open={open}
+      onOpenChange={(open) => {
+        form.reset();
+        setOpen(open);
+      }}
+    >
       <DialogTrigger asChild>
         <Button>{triggerText ?? "Create workflow"}</Button>
       </DialogTrigger>
@@ -110,9 +116,9 @@ function CreateWorkflowsDialog({ triggerText }: { triggerText?: string }) {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full" disabled={isPending} >
-                {!isPending && "Proceed" }
-                {isPending && <Loader2 className="animate"/> }
+              <Button type="submit" className="w-full" disabled={isPending}>
+                {!isPending && "Proceed"}
+                {isPending && <Loader2 className="animate" />}
               </Button>
             </form>
           </Form>
