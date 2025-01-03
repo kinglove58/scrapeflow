@@ -2,14 +2,13 @@
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useCallback, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Layers2Icon } from "lucide-react";
+import { Layers2Icon, Loader2 } from "lucide-react";
 import CustomDialogHeader from "@/components/CustomDialogHeader";
 import {
   createWorkflowSchema,
   createWorkflowSchemaType,
 } from "@/schema/workflow";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -23,8 +22,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useMutation } from "@tanstack/react-query";
-import { CreateWorkflow } from "@/action/workflow/createworkflow";
 import { toast } from "sonner";
+import { CreateWorkflow } from "@/action/workflow/createWorkflow";
 
 function CreateWorkflowsDialog({ triggerText }: { triggerText?: string }) {
   const [open, setOpen] = useState(false);
@@ -111,8 +110,9 @@ function CreateWorkflowsDialog({ triggerText }: { triggerText?: string }) {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">
-                proceed
+              <Button type="submit" className="w-full" disabled={isPending} >
+                {!isPending && "Proceed" }
+                {isPending && <Loader2 className="animate"/> }
               </Button>
             </form>
           </Form>
