@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,6 +12,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { Input } from "@/components/ui/input";
 
 interface Props {
   open: boolean;
@@ -20,6 +21,7 @@ interface Props {
 }
 
 const DeleteWorkflowDialog = ({ open, setOpen, workflowName }: Props) => {
+  const [confirmText, setConfirmText] = useState("");
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       {/*  <AlertDialogTrigger asChild>
@@ -35,9 +37,19 @@ const DeleteWorkflowDialog = ({ open, setOpen, workflowName }: Props) => {
           <div className="flex flex-col gap-2 py-4">
             <p>
               If you are sure, enter <b>{workflowName}</b> to confirm:{" "}
-            </p>
+            </p>{" "}
+            <Input
+              value={confirmText}
+              onChange={(e) => {
+                setConfirmText(e.target.value);
+              }}
+            />
           </div>
         </AlertDialogDescription>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction disabled={confirmText === !workfl} >Delete</AlertDialogAction>
+        </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
   );
