@@ -21,13 +21,16 @@ interface Props {
   open: boolean;
   setOpen: (open: boolean) => void;
   workflowName: string;
+  workflowId: string;
 }
 
-const DeleteWorkflowDialog = ({ open, setOpen, workflowName }: Props) => {
+const DeleteWorkflowDialog = ({ open, setOpen, workflowName, workflowId }: Props) => {
   const [confirmText, setConfirmText] = useState("");
   const deleteMutation = useMutation({
     mutationFn: DeleteWorkflow,
-    onSuccess: () => {},
+    onSuccess: () => {
+        toast.success()
+    },
     onError: () => {},
   });
   return (
