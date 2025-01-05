@@ -13,7 +13,7 @@ import {
   TrashIcon,
 } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuItem,
@@ -83,6 +83,7 @@ function WorkflowCard({ workflow }: { workflow: workflow }) {
 }
 
 function WorkflowActions() {
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -97,9 +98,14 @@ function WorkflowActions() {
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuLabel className="flex items-center text-destructive gap-2">
+        <DropdownMenuItem
+          className="flex items-center text-destructive gap-2"
+          onSelect={() => {
+            setShowDeleteDialog((prev) => !prev);
+          }}
+        >
           <TrashIcon size={16} /> Delete
-        </DropdownMenuLabel>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
