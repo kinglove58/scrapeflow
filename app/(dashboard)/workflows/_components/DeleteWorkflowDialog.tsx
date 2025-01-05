@@ -13,6 +13,9 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
+import { useMutation } from "@tanstack/react-query";
+import { DeleteWorkflow } from "@/action/workflow/DeleteWorkflow";
+import { toast } from "sonner";
 
 interface Props {
   open: boolean;
@@ -22,6 +25,11 @@ interface Props {
 
 const DeleteWorkflowDialog = ({ open, setOpen, workflowName }: Props) => {
   const [confirmText, setConfirmText] = useState("");
+  const deleteMutation = useMutation({
+    mutationFn: DeleteWorkflow,
+    onSuccess: () => {},
+    onError: () => {},
+  });
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       {/*  <AlertDialogTrigger asChild>
@@ -49,8 +57,13 @@ const DeleteWorkflowDialog = ({ open, setOpen, workflowName }: Props) => {
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
-            disabled={confirmText !== workflowName}
+            disabled={confirmText !== workflowName || deleteMutation.isPending}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            onClick={(e) => {
+              e.stopPropagation();
+              toast.loading("Deleting workflow..., {id: workflowId}");
+              deleteMutation.mutate(workflowId)
+            }}
           >
             Delete
           </AlertDialogAction>
