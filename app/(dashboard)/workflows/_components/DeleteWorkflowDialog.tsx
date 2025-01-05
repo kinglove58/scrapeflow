@@ -48,7 +48,12 @@ const DeleteWorkflowDialog = ({ open, setOpen, workflowName }: Props) => {
         </AlertDialogDescription>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction disabled={confirmText === !workfl} >Delete</AlertDialogAction>
+          <AlertDialogAction
+            disabled={confirmText !== workflowName}
+            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+          >
+            Delete
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
