@@ -21,6 +21,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import TooltipWrapper from "@/components/TooltipWrapper";
 
 function WorkflowCard({ workflow }: { workflow: workflow }) {
   const isDraft = workflow.status === workflowStatus.DRAFT;
@@ -85,7 +86,9 @@ function WorkflowActions() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant={"outline"} size={"sm"}>
+          <TooltipWrapper content={"More actions"} >
           <MoreVerticalIcon size={18} />
+          </TooltipWrapper>
         </Button>
       </DropdownMenuTrigger>
     </DropdownMenu>
