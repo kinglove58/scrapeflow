@@ -11,15 +11,18 @@ import {
 interface Props {
   children: ReactNode;
   content: ReactNode;
-  size?: 'top' | 'bottom' | 'left' | 'right';
+  side?: "top" | "bottom" | "left" | "right";
 }
 
 function TooltipWrapper(props: Props) {
   return (
-    <TooltipProvider delayDuration={10} >
-
+    <TooltipProvider delayDuration={0}>
+      <Tooltip>
+        <TooltipTrigger asChild>{props.children}</TooltipTrigger>
+        <TooltipContent side={props.side}>{props.content}</TooltipContent>
+      </Tooltip>
     </TooltipProvider>
-  )
+  );
 }
 
 export default TooltipWrapper;
