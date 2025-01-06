@@ -24,14 +24,22 @@ interface Props {
   workflowId: string;
 }
 
-const DeleteWorkflowDialog = ({ open, setOpen, workflowName, workflowId }: Props) => {
+const DeleteWorkflowDialog = ({
+  open,
+  setOpen,
+  workflowName,
+  workflowId,
+}: Props) => {
   const [confirmText, setConfirmText] = useState("");
   const deleteMutation = useMutation({
     mutationFn: DeleteWorkflow,
     onSuccess: () => {
-        toast.success()
+      toast.success("workflow deleted successfully", { id: workflowId });
+      setConfirmText("");
     },
-    onError: () => {},
+    onError: () => {
+      toast.error("somethind went wrong", { id: workflowId });
+    },
   });
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
@@ -63,9 +71,9 @@ const DeleteWorkflowDialog = ({ open, setOpen, workflowName, workflowId }: Props
             disabled={confirmText !== workflowName || deleteMutation.isPending}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             onClick={(e) => {
-              e.stopPropagation();
+            e.stopPropagation();
               toast.loading("Deleting workflow..., {id: workflowId}");
-              deleteMutation.mutate(workflowId)
+              deleteMutation.mutate(workflowId);
             }}
           >
             Delete
