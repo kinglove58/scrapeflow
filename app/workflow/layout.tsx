@@ -8,7 +8,8 @@ function layout({ children }: { children: React.ReactNode }) {
     {children}
     <Separator/>
     <footer className="flex items-center justify-between p-2">
-       <Logo iconSize={
+       <Logo iconSize={16} fontSize="text-xl"/>
+       <
 
 
 
