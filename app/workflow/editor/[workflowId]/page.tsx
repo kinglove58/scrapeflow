@@ -14,9 +14,9 @@ async function page({ params }: { params: { workflowId: string } }) {
     },
   });
 
-  if(!workflow) return <div></div>
+  if (!workflow) return <div>workflow not found</div>;
 
-  return <div>page</div>;
+  return <pre className="h-screen"> {JSON.stringify(workflow, null, 4)} </pre>;
 }
 
 export default page;
