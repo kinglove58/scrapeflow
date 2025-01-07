@@ -1,9 +1,22 @@
-import React from 'react'
+import prisma from "@/lib/prisma";
+import { auth } from "@clerk/nextjs/server";
+import React from "react";
 
-function page() {
-  return (
-    <div>page</div>
-  )
+async function page({ params }: { params: { workflowId: string } }) {
+  const { workflowId } = params;
+  const { userId } = auth();
+  if (!userId) return <div>unauthenticated</div>;
+
+  const workflow = await prisma.workflow.findUnique({
+    where: {
+      id: workflowId,
+      userId,
+    },
+  });
+
+  if(!workflow) return <div></div>
+
+  return <div>page</div>;
 }
 
-export default page
+export default page;
