@@ -3,10 +3,11 @@ import { TaskType } from "@/types/task";
 
 export function CreateFlowNode(
   nodeType: TaskType,
-  position: { x: number; y: number }
+  position?: { x: number; y: number }
 ): AppNode {
   return {
     id: crypto.randomUUID(),
+    type: "flowscrape",
     data: {
       type: nodeType,
       inputs: {},

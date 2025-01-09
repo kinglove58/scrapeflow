@@ -16,11 +16,10 @@ import { CreateFlowNode } from "@/lib/workflow/createFlowNode";
 import NodeComponent from "./nodes/NodeComponent";
 
 const nodeTypes = {
-  Node: NodeComponent,
-}
+  flowscrape: NodeComponent,
+};
 
 function FlowEditor({ workflow }: { workflow: workflow }) {
-  
   const [nodes, setNodes, onNodesChange] = useNodesState([
     CreateFlowNode(TaskType.LAUNCH_BROWSER),
   ]);
@@ -32,6 +31,7 @@ function FlowEditor({ workflow }: { workflow: workflow }) {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
+        nodeTypes={nodeTypes}
       >
         <Controls position="top-left" />
         <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
