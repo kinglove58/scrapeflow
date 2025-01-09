@@ -13,8 +13,14 @@ import React from "react";
 import "@xyflow/react/dist/style.css";
 import { TaskType } from "@/types/task";
 import { CreateFlowNode } from "@/lib/workflow/createFlowNode";
+import NodeComponent from "./nodes/NodeComponent";
+
+const nodeTypes = {
+  Node: NodeComponent,
+}
 
 function FlowEditor({ workflow }: { workflow: workflow }) {
+  
   const [nodes, setNodes, onNodesChange] = useNodesState([
     CreateFlowNode(TaskType.LAUNCH_BROWSER),
   ]);
