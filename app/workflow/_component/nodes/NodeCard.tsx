@@ -9,7 +9,11 @@ function NodeCard({
   nodeId: string;
   children: ReactNode;
 }) {
-  return <div>{children}</div>;
+  return (
+    <div className="rounded-md cursor-pointer bg-background border-2 border-separate w-[420px] text-xs gap-1 flex flex-col ">
+      {children}
+    </div>
+  );
 }
 
 export default NodeCard;
