@@ -12,10 +12,13 @@ function NodeCard({
   children: ReactNode;
   isSelected: boolean;
 }) {
-const {getNode, setCenter} = useReactFlow
+const {getNode, setCenter} = useReactFlow();
 
   return (
-    <div className="rounded-md cursor-pointer bg-background border-2 border-separate w-[420px] text-xs gap-1 flex flex-col ">
+    <div onDoubleClick={{()={
+        const node = getNode(nodeId)
+        if()
+    }}} className="rounded-md cursor-pointer bg-background border-2 border-separate w-[420px] text-xs gap-1 flex flex-col ">
       {children}
     </div>
   );
