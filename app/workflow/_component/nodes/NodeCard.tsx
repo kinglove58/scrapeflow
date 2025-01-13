@@ -28,11 +28,10 @@ function NodeCard({
         const y = position.y;
 
         if (x === undefined || y === undefined)
-
-        setCenter(x, y, {
-          zoom: 1,
-          duration: 500,
-        });
+          setCenter(x, y, {
+            zoom: 1,
+            duration: 500,
+          });
       }}
       className={cn(
         "rounded-md cursor-pointer bg-background border-2 border-separate w-[420px] text-xs gap-1 flex flex-col ",
