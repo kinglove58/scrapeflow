@@ -6,7 +6,7 @@ import StringParam from "./param/StringParam";
 function NodeParamField({ param }: { param: TaskParam }) {
   switch (param.type) {
     case TaskParamType.STRING:
-      return <StringParam />;
+      return <StringParam param={param} />;
     default:
       return (
         <div className="w-full">
