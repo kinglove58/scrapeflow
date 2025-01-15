@@ -17,14 +17,17 @@ function NodeParamField({
   const value = node?.data.inputs?.[param.name];
   console.log("@VALUE", value);
 
-  const updateNodeParamValue = useCallback((newValue: string) => {
-    updateNodeData(nodeId, {
-      inputs: {
-        ...node?.data.inputs,
-        [param.name]: newValue,
-      },
-    });
-  });
+  const updateNodeParamValue = useCallback(
+    (newValue: string) => {
+      updateNodeData(nodeId, {
+        inputs: {
+          ...node?.data.inputs,
+          [param.name]: newValue,
+        },
+      });
+    },
+    [nodeId, updateNodeData, param.name, node?.data.inputs]
+  );
 
   switch (param.type) {
     case TaskParamType.STRING:
