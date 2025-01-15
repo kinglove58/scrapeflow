@@ -1,6 +1,6 @@
 "use client";
 import { TaskParam, TaskParamType } from "@/types/task";
-import React from "react";
+import React, { useCallback } from "react";
 import StringParam from "./param/StringParam";
 import { useReactFlow } from "@xyflow/react";
 import { AppNode } from "@/types/appNode";
@@ -16,6 +16,15 @@ function NodeParamField({
   const node = getNode(nodeId) as AppNode;
   const value = node?.data.inputs?.[param.name];
   console.log("@VALUE", value);
+
+  const updateNodeParamValue = useCallback((newValue: string) => {
+    updateNodeData(nodeId, {
+      inputs: {
+        ...node?.data.inputs,
+        [param.name]: newValue,
+      },
+    });
+  });
 
   switch (param.type) {
     case TaskParamType.STRING:
