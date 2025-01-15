@@ -5,3 +5,5 @@ function NodeInputs({ children }: { children: ReactNode }) {
 }
 
 export default NodeInputs;
+
+export function NodeInput({input}: {input:any})
