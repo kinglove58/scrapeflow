@@ -6,7 +6,7 @@ import React, { useId, useState } from "react";
 
 function StringParam({ param, value, updateNodeParamValue }: ParamProsp) {
   const id = useId();
-  const [internavalue, setInternavalue] = useState(value)
+  const [internavalue, setInternavalue] = useState(value);
   return (
     <div className="space-y-1 p-1 w-full">
       <Label htmlFor={id} className="text-xs flex">
@@ -14,10 +14,12 @@ function StringParam({ param, value, updateNodeParamValue }: ParamProsp) {
         {param.required && <p className="text-red-400 px-2">*</p>}
       </Label>
       <Input
+        className="text-xs"
         id={id}
-        value={value}
+        value={internavalue}
         placeholder="Enter value here"
         onChange={(e) => setInternavalue(e.target.value)}
+        onBlur={(e) => updateNodeParamValue(e.target.value)}
       />
       {param.helperText && (
         <p className="text-muted-foreground px-2 ">{param.helperText}</p>
