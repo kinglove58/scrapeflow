@@ -6,6 +6,7 @@ import React, { useId } from "react";
 
 function StringParam({ param, value, updateNodeParamValue }: ParamProsp) {
   const id = useId();
+  const [intovaufe, ]
   return (
     <div className="space-y-1 p-1 w-full">
       <Label htmlFor={id} className="text-xs flex">
