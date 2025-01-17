@@ -8,8 +8,10 @@ import React from "react";
 
 interface Props {
   title: string;
+  subtitle?: string;
 }
-function Topbar({ title }: Props) {
+
+function Topbar({ title, subtitle }: Props) {
   const router = useRouter();
   return (
     <header className="flex justify-between border-p-2 border-separate sticky w-full h-[60px] bg-background z-10 p-2 top-0">
@@ -22,6 +24,11 @@ function Topbar({ title }: Props) {
         </TooltipWrapper>
         <div>
           <p className="font-bold text-ellipsis truncate">{title}</p>
+          {subtitle && (
+            <p className="text-xs truncate text-muted-foreground text-ellipsis ">
+              {subtitle}
+            </p>
+          )}
         </div>
       </div>
     </header>
