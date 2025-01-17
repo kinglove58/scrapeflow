@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeftIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
+import SaveBtn from "./SaveBtn";
 
 interface Props {
   title: string;
@@ -30,6 +31,9 @@ function Topbar({ title, subtitle }: Props) {
             </p>
           )}
         </div>
+      </div>
+      <div className="flex flex-1 gap-1 justify-end">
+        <SaveBtn />
       </div>
     </header>
   );

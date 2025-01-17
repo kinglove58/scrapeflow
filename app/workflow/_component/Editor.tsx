@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { workflow } from "@prisma/client";
 import React from "react";
@@ -10,9 +10,9 @@ function Editor({ workflow }: { workflow: workflow }) {
   return (
     <ReactFlowProvider>
       <div className="flex flex-col h-full w-full overflow-hidden">
-        <Topbar title="workflow editor" />
+        <Topbar title="workflow editor" subtitle={workflow.name} />
         <section className="flex h-full overflow-auto">
-          <FlowEditor workflow={workflow} subtitle={workflow.name} />
+          <FlowEditor workflow={workflow}  />
         </section>
       </div>
     </ReactFlowProvider>
