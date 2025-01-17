@@ -22,6 +22,7 @@ function SaveBtn({ workflowId }: { workflowId: string }) {
   return (
     <Button
       variant={"outline"}
+      disabled={saveMutation.isPending}
       className="stroke-green-400"
       onClick={() => {
         const workflowDefinition = JSON.stringify(toObject());
