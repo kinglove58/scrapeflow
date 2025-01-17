@@ -6,7 +6,7 @@ export enum TaskType {
 
 export enum TaskParamType {
   STRING = "STRING",
-  
+  BROWSER_INSTANCE = "BROWSER_INSTANCE"
 }
 
 export interface TaskParam{

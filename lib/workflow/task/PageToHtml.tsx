@@ -12,9 +12,7 @@ export const PageToHtmlTask = {
     {
       name: "web page",
       type: TaskParamType.BROWSER_INSTANCE,
-      helperText: "e.g: https://www.google.com",
       required: true,
-      hideHandle: true,
-    }
-  ]
+    },
+  ],
 };
