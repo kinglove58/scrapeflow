@@ -35,11 +35,15 @@ export default TaskMenu;
 
 function TaskMenuBtn({ taskType }: { taskType: TaskType }) {
   const task = TaskRegistry[taskType];
+  const onDragStart = (event: React.DragEvent, type: TaskType) => {
+    event.dataTransfer.setData("application/reactflow", type);
+  };
   return (
     <Button
       variant={"secondary"}
       className="flex justify-between items-center gap-2 border w-full"
       draggable
+      onDragStart={(event) => onDragStart(event, taskType)}
     >
       <div className="flex gap-2">
         <task.icon // @ts-ignore
