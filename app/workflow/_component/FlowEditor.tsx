@@ -33,7 +33,7 @@ function FlowEditor({ workflow }: { workflow: workflow }) {
       setNodes(flow.nodes || []);
       setEdges(flow.edges || []);
     } catch (error) {}
-  }, [workflow.definition, setEdges, setno]);
+  }, [workflow.definition, setEdges, setNodes]);
   return (
     <main className="h-full w-full ">
       <ReactFlow
