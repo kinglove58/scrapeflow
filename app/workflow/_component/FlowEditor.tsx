@@ -50,6 +50,8 @@ function FlowEditor({ workflow }: { workflow: workflow }) {
         fitViewOptions={fitViewOptions}
         snapToGrid
         fitView
+        onDragOver={onDragOver}
+        onDrop={onDrop}
       >
         <Controls position="top-left" />
         <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
