@@ -28,9 +28,14 @@ function FlowEditor({ workflow }: { workflow: workflow }) {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const { setViewport } = useReactFlow();
 
-  const onDragOver = useCallback((event:React.DragEvent) => {
+  const onDragOver = useCallback((event: React.DragEvent) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
+  }, []);
+
+  const onDrop = useCallback((event: React.DragEvent) => {
+    event.preventDefault();
+    const taskType = event.dataTransfer.getData("application/reactflow");
   }, []);
 
   useEffect(() => {
