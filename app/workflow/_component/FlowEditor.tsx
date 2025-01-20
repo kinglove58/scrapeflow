@@ -10,7 +10,7 @@ import {
   useNodesState,
   useReactFlow,
 } from "@xyflow/react";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import "@xyflow/react/dist/style.css";
 import { TaskType } from "@/types/task";
 import { CreateFlowNode } from "@/lib/workflow/createFlowNode";
@@ -27,6 +27,11 @@ function FlowEditor({ workflow }: { workflow: workflow }) {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const { setViewport } = useReactFlow();
+
+  const onDragOver = useCallback((event:React.DragEvent) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+  }, []);
 
   useEffect(() => {
     try {
